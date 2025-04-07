@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'order',
+    'blog'
 ]
 
 MIDDLEWARE = [
@@ -54,9 +55,9 @@ ROOT_URLCONF = 'ecommerce.urls'
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'BACKEND': 'django.template.backends.django.DjangoTemplates', # it says we are using Django Template Language (DTL)
         'DIRS': [],
-        'APP_DIRS': True,
+        'APP_DIRS': True, # Templates work if app_dirs = True
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
