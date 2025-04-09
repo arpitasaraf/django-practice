@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{site_name}}</title>
+</head>
+<body>
+    <h2>This is article read page </h2>
+
+{% if isGraduated %}
+    <p>I am graduated</p>
+{% else %}
+    <p>I am not graduated</p>
+{% endif %}
+
+<h3>Skills :</h3>
+{{skills}}
+ <ol type="1">
+{% for element in skills %}
+<li>{{element}}</li>
+{% endfor %}
+</ol>
+
+<h3>Role :</h3>
+{% if role == "senior" %}
+<h2>I am a Senior . I have full access.</h2>
+{% elif role == "junior" %}
+<h2>I am a Junior . I have limited access.</h2>
+{% elif role == "intern" %}
+<h2>I am an Intern . I have no access.</h2>
+{% else %}
+<h2>I have no role.</h2>
+{% endif %}
+
+<h3>Country Info</h3>
+{{country_info}}
+
+<ul>
+    {% for key,value in country_info.items %}
+    <li>{{ key }} : {{value}}</li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>

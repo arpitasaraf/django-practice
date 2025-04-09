@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Filters : </h3>
+    <h4>Words Filters </h4>
+    <ul>
+        <li>Name (Uppercase) : {{name|upper}}</li>
+        <li>Name (Lowercase) : {{name|lower}} </li>
+        <li>Site Name : {{site_name|capfirst}}</li>
+        <li>Site Name (Capitilize) : {{site_name|title}}</li>
+        <li>Description (truncatechars) : {{desc|truncatechars:10}}</li>
+        <li>Description (truncatewords) : {{desc|truncatewords:5}}</li>
+        <li>Description (length) : {{desc|length}}</li>
+        <li>Adhaar No : {{adhaarNo|default:"Adhaar no is not provided"}}</li>
+        <li>Description (Slicing) : {{desc|slice:"10"}}</li>
+        <li>Description (Slicing) : {{desc|slice:"17:"}}</li>
+        <li>Description (Slicing) : {{desc|slice:"17:31"}}</li>
+    </ul>
+</body>
+</html>
