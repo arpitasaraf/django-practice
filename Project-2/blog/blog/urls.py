@@ -16,12 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from articles.views import article_page_view , article_writer_view,article_read_view,article_filter_view
+from articles.views import article_page_view , article_writer_view,article_read_view,article_filter_view,article_date_view
+from design.views import design_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('articles/',article_page_view,name="article_page_view",kwargs={"name":"navansh","isMale":True}),
     path('articles-write/',article_writer_view, name="article_writer_view",kwargs={"city":"kanpur","state":"U.P."}),
     path("article-read/",article_read_view,name="article_read_view"),
-    path("django-filters/",article_filter_view,name="article-filter-view")
+    path("django-filters/",article_filter_view,name="article-filter-view"),
+    path("django-date/",article_date_view,name="article-date-view"),
+    path("django-static-files/",design_view,name="design_view")
 ]

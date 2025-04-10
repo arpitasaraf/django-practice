@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    {{date}}
+    <ol type="1">
+        <li>Format : {{date|date}}</li>
+        <li>Format : {{date|date:"d-m-Y"}}</li>
+        <li>Format : {{date|date:"d-m-Y H:i:s"}}</li>
+        <li>Format : {{date|date:"D d M Y"}}</li>
+        <li>Format : {{date|date:"SHORT_DATE_FORMAT"}}</li>
+        <li>Format : {{date|date:"SHORT_DATETIME_FORMAT"}}</li>
+        <li>Format : {{date|time}}</li>
+        <li>Format : {{date|time:"H:i:s"}}</li>
+        <li>Format : {{date|time:"TIME_FORMAT"}}</li>
+    </ol>
+</body>
+</html>

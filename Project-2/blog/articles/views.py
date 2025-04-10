@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from datetime import datetime
 # Create your views here.
 def article_page_view(request):
     
@@ -38,3 +39,10 @@ def article_filter_view(request):
         "adhaarNo" : None
     }
     return render(request,"articles/filter.html",context=dict)
+
+def article_date_view(request):
+    print(datetime.now())
+    dict = {
+        "date" : datetime.now()
+    }
+    return render(request,"articles/datefilter.html",context=dict)
