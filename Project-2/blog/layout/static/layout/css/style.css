@@ -1,0 +1,11 @@
+* {
+    margin: 0px;
+}
+nav,
+footer {
+    border: 2px solid black;
+    height: 70px;
+}
+.heading{
+    color: aqua;
+}

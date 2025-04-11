@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> {% block title %}Bloggify{% endblock title %} </title>
+    {% block stylesheet %}
+     <link rel="stylesheet" href="{% static 'layout/css/style.css' %}">
+     {% endblock stylesheet %}
+     
+    {% comment %} <title> {% block title %}Default Value{% endblock title %} </title> {% endcomment %}
+    
+</head>
+<body>
+    <nav>
+        Navbar
+    </nav>
+<main>
+    {% block mainContent %}{% endblock mainContent %}
+</main>
+    <footer>
+        Footer &copy; All right reserved
+    </footer>
+</body>
+</html>

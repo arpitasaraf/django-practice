@@ -1,0 +1,13 @@
+{% extends "layout/base.html" %}
+{% load static %}
+
+{% block stylesheet %}
+{{block.super}}
+<link rel="stylesheet" href="{% static 'inheritance/css/personal-page-css.css' %}">
+{% endblock stylesheet %}
+
+
+{% block mainContent %}
+<h1 class="heading">Mohd Hamza</h1>
+ <h3 class="personal-details">this is personal page</h3>
+{% endblock mainContent %}
