@@ -8,14 +8,17 @@
     {% block stylesheet %}
      <link rel="stylesheet" href="{% static 'layout/css/style.css' %}">
      {% endblock stylesheet %}
+     <style>
+        nav{
+            height :auto;
+        }
+     </style>
      
     {% comment %} <title> {% block title %}Default Value{% endblock title %} </title> {% endcomment %}
     
 </head>
 <body>
-    <nav>
-        Navbar
-    </nav>
+    {% include "layout/components/navbar.html" %}
 <main>
     {% block mainContent %}{% endblock mainContent %}
 </main>

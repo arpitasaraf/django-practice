@@ -1,12 +1,4 @@
-"""
-Examples:
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
+
 
 from django.contrib import admin
 from django.urls import path
@@ -27,9 +19,9 @@ urlpatterns = [
     path("django-date/", article_date_view, name="article-date-view"),
     path("django-static-files/", design_view, name="design_view"),
     path("django-static-ui-view/", ui_view, name="ui_view"),
-    path("", home_view),
-    path("about-page/", about_page_view),
+    path("", home_view,name="home_view"),
+    path("django-about-page/", about_page_view,name="about_page_view"),
     path("contact-page/", contact_page_view),
-    path("personal-page/", personal_page_view),
+    path("personal-page/", personal_page_view,name = "personal_page_view"),
     path("complain-page/", complain_page_view),
 ]
