@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>All Products</h2>
+    {{products}}
+    <ul>
+        {% for item in products %}
+        <li>{{item}}</li>
+        {% endfor %}
+    </ul>
+
+    <ul>
+        {% for item in products %}
+        <li>{{item.product_name}}, Rs-{{item.price}}</li>
+        {% endfor %}
+    </ul>
+
+    <table border='2'>
+        <tr>
+            <th>ID</th>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>isAvailable</th>
+            <th>Desc</th>
+        </tr>
+        {% for item in products %}
+        <tr>
+            <td>{{item.id}}</td>
+            <td>{{item.product_name}}</td>
+            <td>{{item.price}}</td>
+            <td>{{item.quantity}}</td>
+            <td>{{item.is_available}}</td>
+            <td>{{item.description}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>
