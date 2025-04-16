@@ -1,0 +1,17 @@
+{% for article in articles %}
+<div class="card-div">
+    <figure>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoFRQjM-wM_nXMA03AGDXgJK3VeX7vtD3ctA&s" alt="">
+    </figure>
+    <div class="card-div-info">
+        <h3>{{article.title}}</h3>
+        <span>❤️ {{article.like_count}}</span>
+    </div>
+
+    <span>{{article.author}}</span>
+    <p>{{article.published_date}}</p>
+
+</div>
+{% endfor %}
+
+
