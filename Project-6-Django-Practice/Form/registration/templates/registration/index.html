@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Rgistration Form</h1>
+    <h2>{{name}}</h2>
+    <h2>{{site_name}}</h2>
+    <h2>{{skills}}</h2>
+    <ul>
+        {% for skill in skills %}
+        <li>{{skill}}</li>
+        {% endfor %}
+    </ul>
+    <div>
+        {% if isGraduated %}
+        <h3>yes</h3>
+        {% else %}
+        <h3>no</h3>
+        {% endif %}
+    </div>
+</body>
+</html>
