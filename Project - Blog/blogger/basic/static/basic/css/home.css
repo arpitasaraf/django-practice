@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100dvw;
+    height: 100dvh;
+    overflow-x: hidden !important;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 10dvh;
+    background-color: rgb(24, 23, 23);
+}
+
+.navbar h1 {
+    color: whitesmoke;
+}
+
+.navbar a {
+    color: rgb(195, 193, 193);
+}

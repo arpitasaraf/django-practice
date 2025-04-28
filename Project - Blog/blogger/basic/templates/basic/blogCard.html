@@ -1,0 +1,26 @@
+{% extends "basic/base.html" %}
+{% load static %}
+{% block "styleSheet" %}
+{{block.super}}
+<link rel="stylesheet" href="{% static 'basic/css/blogCard.css' %}">
+{% endblock "styleSheet" %}
+
+{% block "mainContent" %}
+
+
+<div class="blog-card-container">
+
+{% for item in blogs %}
+<div class="blog-card">
+    <h2 class='cursor-pointer'><a href="{% url 'blog_content_view' %}">{{item.title}}</a></h2>
+    <p>{{item.content|truncatewords:15}}</p>
+    <span>published at : {{item.created_at}}</span>
+</div>
+{% endfor %}
+
+
+</div>
+
+
+
+{% endblock "mainContent" %}

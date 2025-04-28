@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   {% block "styleSheet" %} <link rel="stylesheet" href="{% static 'basic/css/home.css' %}">{% endblock "styleSheet" %}
+</head>
+<body>
+    <nav class="navbar">
+        <h1>Blogger</h1>
+        <a href="{% url 'home_view' %}">Home</a>
+        <a href="{% url 'create_blog_view' %}">Create</a>
+    </nav>
+    {% block "mainContent" %}
+    
+    {% endblock "mainContent" %}
+</body>
+</html>
