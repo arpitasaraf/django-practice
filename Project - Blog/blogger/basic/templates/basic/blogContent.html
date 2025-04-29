@@ -3,9 +3,10 @@
 {% load static %}
 
 {% block "mainContent" %}
-<h2>Title</h2>
-<span>date</span>
+
+<h2>{{blog.title}}</h2>
+<span>{{blog.created_at}}</span>
 <article>
-    content
+  {{blog.content}}
 </article>
 {% endblock "mainContent" %}
