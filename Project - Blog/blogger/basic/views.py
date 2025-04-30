@@ -41,12 +41,26 @@ def create_blog_view(request):
     return render(request,'basic/createblog.html',context=context)
 
 
-def blog_content_view(request,blog_id):
+def blog_content_view(request,blog_id,confirm):
+    print("confirm",confirm)
     print(blog_id)
     data = Blog.objects.get(id=blog_id)
     # print(data.__dict__)
     context = {
-        "blog" : data
+        "blog" : data,
+        "confirm" : confirm
     }
     return render(request,'basic/blogContent.html',context=context)
+
+def delete_blog_view(request,blog_id):
+    print(request.method)
+    print("eufasdfjklasdjl;",blog_id)
+    if request.method == "POST":
+        data = Blog.objects.get(id=blog_id) 
+        data.delete()
+        return HttpResponseRedirect('/')
+    else:
+        return render(request,'basic/errorpage.html')
+    
+    
 
