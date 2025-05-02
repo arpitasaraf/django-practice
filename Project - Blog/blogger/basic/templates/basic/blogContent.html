@@ -9,6 +9,8 @@
 
 <div class="title-trash-div">
   <h2>{{blog.title}}</h2>
+
+  <a href="{% url "update_blog_view" blog.id %}"><button>Update</button></a>
   <a href="{% url 'delete_blog_view' blog.id %}">
     <i class='bx bxs-trash'></i>
   </a>

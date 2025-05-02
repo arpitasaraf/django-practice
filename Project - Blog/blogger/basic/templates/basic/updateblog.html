@@ -1,0 +1,22 @@
+{% extends "basic/base.html" %}
+
+
+{% block "mainContent" %}
+<form method="POST">
+    {% csrf_token %}
+    <div>
+        {{form.title.label_tag}}
+        <input type="text" value={{blog.title}}>
+    </div>
+    <div>
+        {{form.content.label_tag}}
+        <textarea name="" id="" rows='20' columns="40">{{blog.content}}</textarea>
+    </div>
+    <div>
+        {{form.is_published.label_tag}}
+        <input type="checkbox" name="" id="" blog.is_published|default:checked>
+    </div>
+  
+   <button type="submit">Update</button>
+</form>
+{% endblock "mainContent" %}
