@@ -2,7 +2,7 @@ from django.shortcuts import render
 from basic.models import Blog
 from basic.forms import BlogForm
 from django.http import HttpResponseRedirect
-
+from django.db.models import Q
 
 def home_view(request):
     data = Blog.objects.all()
@@ -86,3 +86,20 @@ def update_blog_view(request, blog_id):
         data = Blog.objects.get(id=blog_id)
         context = {"form": fm, "blog": data}
         return render(request, 'basic/updateblog.html', context=context)
+
+
+def search_blog_view(request):
+    # print(request.method)
+    # print(request.GET)
+    search_value = request.GET.get("search")
+
+    if search_value:
+        print(search_value)
+        # result = Blog.objects.filter(title__icontains=search_value,content__icontains  = search_value) # AND Condition
+        result = Blog.objects.filter(Q(title__icontains=search_value) | Q(content__icontains  = search_value)) # OR Condition
+        context = {
+            "blogs": result
+        }
+        return render(request, "basic/searchPage.html", context=context)
+    else:
+        return render(request, "basic/searchPage.html")
