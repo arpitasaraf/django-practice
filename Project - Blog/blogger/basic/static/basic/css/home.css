@@ -18,11 +18,19 @@ body {
 .navbar {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 10px;
     height: 10dvh;
+    border: 2px solid yellow;
     background-color: rgb(24, 23, 23);
+    overflow-y: hidden;
 }
 
+.navbar img{
+    height: 50px !important;
+    max-height: 60px;
+
+}
 .navbar h1 {
     color: whitesmoke;
 }

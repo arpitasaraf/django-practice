@@ -6,14 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-   {% block "styleSheet" %} <link rel="stylesheet" href="{% static 'basic/css/home.css' %}">{% endblock "styleSheet" %}
+   {% block "styleSheet" %} 
+   <link rel="stylesheet" href="{% static 'basic/css/home.css' %}">
+   {% endblock "styleSheet" %}
+   <style>
+    .navbar img{
+        height: 50px !important;
+        max-height: 60px;
+    }
+   </style>
 </head>
 <body>
     <nav class="navbar">
-        <h1>Blogger</h1>
+        <div>
+            <img src="{% static 'core/images/logo.png' %}" alt="logo">
+            <h1>Blogger</h1>
+        </div>
+       <div>
         <a href="{% url 'home_view' %}">Home</a>
         <a href="{% url 'create_blog_view' %}">Create</a>
         <a href="{% url 'search_blog_view' %}">search</a>
+       </div>
+     <div>
+        <button><a href="{% url 'registration_view' %}">Sign up</a></button>
+        <button><a href="{% url 'login_view' %}">Login</a></button>
+     </div>
+       
     </nav>
     {% block "mainContent" %}
     

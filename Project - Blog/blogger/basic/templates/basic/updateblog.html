@@ -6,15 +6,21 @@
     {% csrf_token %}
     <div>
         {{form.title.label_tag}}
-        <input type="text" value={{blog.title}}>
+        <input type="text" name="{{form.title.name}}" value={{blog.title}}>
     </div>
     <div>
         {{form.content.label_tag}}
-        <textarea name="" id="" rows='20' columns="40">{{blog.content}}</textarea>
+        <textarea name="{{form.content.name}}" id="" rows='20' columns="40">{{blog.content}}</textarea>
     </div>
     <div>
         {{form.is_published.label_tag}}
-        <input type="checkbox" name="" id="" blog.is_published|default:checked>
+        {% comment %} <mark>{{blog.is_published}}</mark> {% endcomment %}
+        {% if blog.is_published %}
+        <input type="checkbox" name="{{form.is_published.name}}" id="" checked>
+        {% else %}
+        <input type="checkbox" name="{{form.is_published.name}}" id="" >
+        {% endif %}
+        
     </div>
   
    <button type="submit">Update</button>

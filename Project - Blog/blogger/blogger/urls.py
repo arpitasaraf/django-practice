@@ -1,7 +1,8 @@
 from django.contrib import admin
 from django.urls import path
 from practice.views import demo_form_view
-from basic.views import home_view, create_blog_view, blog_content_view, delete_blog_view, update_blog_view,search_blog_view
+from user.views import registration_view,login_view
+from basic.views import home_view, create_blog_view, blog_content_view, delete_blog_view, update_blog_view, search_blog_view
 urlpatterns = [
     path('admin/', admin.site.urls),
     # basic
@@ -11,7 +12,10 @@ urlpatterns = [
          blog_content_view, name="blog_content_view"),
     path('delete-blog/<int:blog_id>/', delete_blog_view, name="delete_blog_view"),
     path('update-blog/<int:blog_id>/', update_blog_view, name="update_blog_view"),
-    path('search-blog/',search_blog_view,name="search_blog_view"),
-    # practice 
-    path('demo-form/',demo_form_view,name='demo_form_view')
+    path('search-blog/', search_blog_view, name="search_blog_view"),
+    # practice
+    path('demo-form/', demo_form_view, name='demo_form_view'),
+    # auth
+    path('registration/', registration_view, name="registration_view"),
+    path('login/',login_view,name='login_view')
 ]

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'user/css/registration.css' %}">
+</head>
+
+<body>
+    <div class="user">
+        <img src="{% static 'core/images/logo.png' %}}" alt="logo">
+        <h2>Create a new account</h2>
+        <form class="client">
+            <div class="pass">
+                <label for="un">Username</label>
+                <input type="text" id="un">
+            </div>
+            <div class="pass">
+                <label for="email">Email address</label>
+                <input type="text" id="email">
+            </div>
+            <div class="pass">
+                <div class="passcontainer">
+                    <label for="pass">Password</label>
+                    <a href="">Forget password?</a>
+                </div>
+                <input type="password" id="pass">
+            </div>
+            <button>Sign in</button>
+        </form>
+
+        <p>Already have acount?<a href="./index.html">Login</a></p>
+    </div>
+</body>
+
+</html>
