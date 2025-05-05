@@ -21,20 +21,29 @@ body {
     justify-content: space-between;
     gap: 10px;
     height: 10dvh;
-    border: 2px solid yellow;
     background-color: rgb(24, 23, 23);
     overflow-y: hidden;
+    padding: 0px 20px;
 }
 
-.navbar img{
-    height: 50px !important;
-    max-height: 60px;
-
-}
-.navbar h1 {
-    color: whitesmoke;
+.navbar img {
+    height: 100px !important;
+    filter: invert(200%) brightness(200%);
 }
 
 .navbar a {
     color: rgb(195, 193, 193);
+    text-decoration: none;
+    font-size: large;
+    font-family: cursive;
+}
+
+.navbar button {
+    background-color: white;
+    padding: 3px 5px;
+    border-radius: 10px;
+}
+
+.navbar button a {
+    color: black;
 }

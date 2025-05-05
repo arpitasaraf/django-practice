@@ -9,20 +9,23 @@
 </head>
 
 <body>
+    {% comment %} {{form}} {% endcomment %}
+   
     <div class="user">
         <img src="{% static 'core/images/logo.png' %}" alt="fsdf">
         <h2>Sign in to account </h2>
-        <form>
+        {{form.non_field_errors}}
+        <form method="POST">
+            {% csrf_token %}
             <div class="client">
-                <label for="email">Email address</label>
-                <input type="text" id="email">
+                <label for="email">{{form.username.label}}</label>
+                {{form.username}}
             </div>
             <div class="client">
                 <div class="pass">
-                    <label for="password">Password</label>
-                    <a href="">Forget password?</a>
+                    <label for="password">{{form.password.label}}</label>
                 </div>
-                <input type="password" id="password">
+               {{form.password}}
             </div>
             <button>Sign in </button>
         </form>

@@ -9,24 +9,36 @@
 </head>
 
 <body>
+    {% comment %} {{form.errors}} {% endcomment %}
+    {% comment %} {{form}} {% endcomment %}
     <div class="user">
         <img src="{% static 'core/images/logo.png' %}}" alt="logo">
         <h2>Create a new account</h2>
-        <form class="client">
+        <form class="client" method="POST">
+            {% csrf_token %}
+            <span>{{form.username.errors}}</span>
             <div class="pass">
-                <label for="un">Username</label>
-                <input type="text" id="un">
+                <label for="{{form.username.id_for_label}}">{{form.username.label}}</label>
+               {{form.username}}
             </div>
-            <div class="pass">
+            {% comment %} <div class="pass">
                 <label for="email">Email address</label>
                 <input type="text" id="email">
-            </div>
+            </div> {% endcomment %}
+            <span>{{form.password1.errors}}</span>
             <div class="pass">
                 <div class="passcontainer">
-                    <label for="pass">Password</label>
-                    <a href="">Forget password?</a>
+                    <label for="{{form.password1.id_for_label}}">{{form.password1.label}}</label>
                 </div>
-                <input type="password" id="pass">
+               {{form.password1}}
+            </div>
+
+            <span>{{form.password2.errors}}</span>
+            <div class="pass">
+                <div class="passcontainer">
+                    <label for="{{form.password2.id_for_label}}">{{form.password2.label}}</label>
+                </div>
+               {{form.password2}}
             </div>
             <button>Sign in</button>
         </form>
