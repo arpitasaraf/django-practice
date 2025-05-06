@@ -3,16 +3,21 @@ from basic.models import Blog
 from basic.forms import BlogForm
 from django.http import HttpResponseRedirect
 from django.db.models import Q
+from user.views import check_login_view
+from django.contrib.auth.decorators import login_required
 
 def home_view(request):
-    data = Blog.objects.all()
-    # print(data.values())
+    data = Blog.objects.all().values()
+    print(data)
+    is_logged_in = check_login_view(request)
+    print(is_logged_in)    
     dict = {
-        "blogs": data
+        "blogs": data,
+        "is_logged_in" : is_logged_in
     }
     return render(request, 'basic/blogCard.html', context=dict)
 
-
+@login_required
 def create_blog_view(request):
     # print(request.method)
     if request.method == "POST":
@@ -31,7 +36,7 @@ def create_blog_view(request):
                 is_published=is_published
             )
             print(create_data.__dict__)
-            return HttpResponseRedirect(f'/blog-content/{create_data.id}')
+            return HttpResponseRedirect(f'/blog-content/{create_data.id}/no')
     else:
         fm = BlogForm()
 
@@ -45,10 +50,12 @@ def blog_content_view(request, blog_id, confirm):
     print("confirm", confirm)
     print(blog_id)
     data = Blog.objects.get(id=blog_id)
+    is_logged_in = check_login_view(request)
     # print(data.__dict__)
     context = {
         "blog": data,
-        "confirm": confirm
+        "confirm": confirm,
+        "is_logged_in" : is_logged_in
     }
     return render(request, 'basic/blogContent.html', context=context)
 
@@ -63,7 +70,7 @@ def delete_blog_view(request, blog_id):
     else:
         return render(request, 'basic/errorpage.html')
 
-
+@login_required
 def update_blog_view(request, blog_id):
     print("blog : ", blog_id)
     if request.method == "POST":

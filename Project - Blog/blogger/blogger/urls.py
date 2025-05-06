@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 from practice.views import demo_form_view
-from user.views import registration_view,login_view
+from user.views import registration_view,login_view,logout_view
 from basic.views import home_view, create_blog_view, blog_content_view, delete_blog_view, update_blog_view, search_blog_view
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -17,5 +17,6 @@ urlpatterns = [
     path('demo-form/', demo_form_view, name='demo_form_view'),
     # auth
     path('registration/', registration_view, name="registration_view"),
-    path('login/',login_view,name='login_view')
+    path('login/',login_view,name='login_view'),
+    path('logout/',logout_view,name='logout_view')
 ]
