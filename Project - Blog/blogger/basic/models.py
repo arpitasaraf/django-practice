@@ -8,10 +8,11 @@ class Blog(models.Model):
     content = models.TextField()
     is_published = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
+    like = models.IntegerField(default=0)
     user = models.ForeignKey(
         User, # jis model ki primary key attach karni hai uska Model class.
         on_delete=models.CASCADE, # agar user delete hua to uske sarey blogs delete ho jayenge.
-        default= 1,
+        default= None,
     )
 
     def __str__(self):

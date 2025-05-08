@@ -7,10 +7,13 @@ from user.views import check_login_view
 from django.contrib.auth.decorators import login_required
 
 def home_view(request):
-    data = Blog.objects.all().values()
-    print(data)
+
+    # data = Blog.objects.all().values() // important  : if you don't want foreign key data 
+    data = Blog.objects.filter(is_published__exact = True).select_related('user')
+
+    # print(data)
     is_logged_in = check_login_view(request)
-    print(is_logged_in)    
+    # print(is_logged_in)    
     dict = {
         "blogs": data,
         "is_logged_in" : is_logged_in
@@ -19,13 +22,14 @@ def home_view(request):
 
 @login_required
 def create_blog_view(request):
+
     # print(request.method)
     if request.method == "POST":
-        print(request.POST)
+        # print(request.POST)
         fm = BlogForm(request.POST)
         # print(fm)
         if fm.is_valid():  # validate form at server side
-            print("create somse data")
+            # print("create somse data")
            #  print(fm.cleaned_data)
             title = fm.cleaned_data.get('title')
             content = fm.cleaned_data.get('content')
@@ -33,7 +37,8 @@ def create_blog_view(request):
             create_data = Blog.objects.create(
                 title=title,
                 content=content,
-                is_published=is_published
+                is_published=is_published,
+                user = request.user.username
             )
             print(create_data.__dict__)
             return HttpResponseRedirect(f'/blog-content/{create_data.id}/no')
@@ -47,9 +52,11 @@ def create_blog_view(request):
 
 
 def blog_content_view(request, blog_id, confirm):
-    print("confirm", confirm)
-    print(blog_id)
+    # print("confirm", confirm)
+    # print(blog_id)
     data = Blog.objects.get(id=blog_id)
+    
+    print(data.user.username)
     is_logged_in = check_login_view(request)
     # print(data.__dict__)
     context = {
@@ -61,8 +68,8 @@ def blog_content_view(request, blog_id, confirm):
 
 
 def delete_blog_view(request, blog_id):
-    print(request.method)
-    print("eufasdfjklasdjl;", blog_id)
+    # print(request.method)
+    # print("eufasdfjklasdjl;", blog_id)
     if request.method == "POST":
         data = Blog.objects.get(id=blog_id)
         data.delete()
@@ -110,3 +117,18 @@ def search_blog_view(request):
         return render(request, "basic/searchPage.html", context=context)
     else:
         return render(request, "basic/searchPage.html")
+
+@login_required
+def update_like_count_view(request,blog_id):
+    if request.method == "POST":
+        data = Blog.objects.get(id=blog_id)
+        print(data.like)
+        previous_like = data.like
+        data.like = previous_like + 1
+        data.save()
+        return HttpResponseRedirect('/')
+    else:
+        context = {
+            'error' : "Get request is not accepted"
+        }
+        return HttpResponseRedirect('/')
