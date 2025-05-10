@@ -21,10 +21,12 @@
                 <label for="{{form.username.id_for_label}}">{{form.username.label}}</label>
                {{form.username}}
             </div>
-            {% comment %} <div class="pass">
-                <label for="email">Email address</label>
-                <input type="text" id="email">
-            </div> {% endcomment %}
+
+             <div class="pass">
+                <label for="{{form.email.id_for_label}}">{{form.email.label}}</label>
+             {{form.email}}
+            </div> 
+            
             <span>{{form.password1.errors}}</span>
             <div class="pass">
                 <div class="passcontainer">

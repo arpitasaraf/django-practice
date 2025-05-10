@@ -7,7 +7,8 @@ from user.views import check_login_view
 from django.contrib.auth.decorators import login_required
 
 def home_view(request):
-
+    import sqlite3
+    print(sqlite3.version)
     # data = Blog.objects.all().values() // important  : if you don't want foreign key data 
     data = Blog.objects.filter(is_published__exact = True).select_related('user')
 
@@ -38,7 +39,7 @@ def create_blog_view(request):
                 title=title,
                 content=content,
                 is_published=is_published,
-                user = request.user.username
+                user = request.user
             )
             print(create_data.__dict__)
             return HttpResponseRedirect(f'/blog-content/{create_data.id}/no')
