@@ -5,20 +5,30 @@ from django.http import HttpResponseRedirect
 from django.db.models import Q
 from user.views import check_login_view
 from django.contrib.auth.decorators import login_required
+from userprofile.models import UserProfile
+import json 
 
 def home_view(request):
     import sqlite3
     print(sqlite3.version)
     # data = Blog.objects.all().values() // important  : if you don't want foreign key data 
-    data = Blog.objects.filter(is_published__exact = True).select_related('user')
-
-    # print(data)
     is_logged_in = check_login_view(request)
-    # print(is_logged_in)    
-    dict = {
+    data = Blog.objects.filter(is_published__exact = True).select_related('user')
+    if is_logged_in:
+        profile = UserProfile.objects.get(user = request.user)
+        dict = {
+        "blogs": data,
+        "is_logged_in" : is_logged_in,
+        "liked_list" : json.loads(profile.liked_blog_ids)
+    }
+    else:
+        dict = {
         "blogs": data,
         "is_logged_in" : is_logged_in
     }
+    # print(data)
+    # print(is_logged_in)    
+    
     return render(request, 'basic/blogCard.html', context=dict)
 
 @login_required
@@ -121,11 +131,34 @@ def search_blog_view(request):
 
 @login_required
 def update_like_count_view(request,blog_id):
+    
     if request.method == "POST":
         data = Blog.objects.get(id=blog_id)
         print(data.like)
+        
         previous_like = data.like
-        data.like = previous_like + 1
+
+        profile = UserProfile.objects.get(user = request.user)
+        # print(profile.__dict__)
+        liked_list_str = profile.liked_blog_ids
+        liked_list = json.loads(liked_list_str) # converting string "[]" into list []
+        print(type(liked_list))
+
+
+        if blog_id in liked_list:
+            liked_list.remove(blog_id)
+            data.like = previous_like - 1
+            print("************************")
+        else:
+            liked_list.append(blog_id)
+            data.like = previous_like + 1
+            print("************************")
+        # print(type(liked_list))
+        # profile.liked_blog_ids = liked_list
+        print("----------------------------")
+        profile.liked_blog_ids = json.dumps(liked_list) # list [1,2,5] will convert into "[1,2,5]"
+      
+        profile.save()
         data.save()
         return HttpResponseRedirect('/')
     else:

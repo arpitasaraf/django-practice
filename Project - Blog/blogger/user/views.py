@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from user.forms import CustomUserCreationForm,CustomAuthenticationForm
 from django.contrib.auth import login,logout
+from userprofile.models import UserProfile
 
 def registration_view(request):
     print(request.method)
@@ -10,7 +11,8 @@ def registration_view(request):
         fm = CustomUserCreationForm(request.POST)
         print(fm.is_valid())
         if fm.is_valid():
-            fm.save()
+            user = fm.save()
+            created_profile = UserProfile.objects.create(user=user)
             return redirect('/login')
         else:
             # print(fm.errors)
