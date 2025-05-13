@@ -1,7 +1,7 @@
 
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -11,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-SECRET_KEY = 'django-insecure-nj_sb5vml$xqpl%axu#rv1z$n1$xn2iw#r=$n9rml2r308l&$0'
+SECRET_KEY = os.environ.get("SECRET_KEY","SECRET")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

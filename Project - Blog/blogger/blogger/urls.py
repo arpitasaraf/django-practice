@@ -3,6 +3,7 @@ from django.urls import path
 from practice.views import demo_form_view
 from user.views import registration_view, login_view, logout_view
 from basic.views import home_view, create_blog_view, blog_content_view, delete_blog_view, update_blog_view, search_blog_view, update_like_count_view
+from userprofile.views import profile_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -21,5 +22,7 @@ urlpatterns = [
     # auth
     path('registration/', registration_view, name="registration_view"),
     path('login/', login_view, name='login_view'),
-    path('logout/', logout_view, name='logout_view')
+    path('logout/', logout_view, name='logout_view'),
+    #profile
+    path('profile/',profile_view,name='profile_view')
 ]

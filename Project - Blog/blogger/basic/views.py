@@ -9,8 +9,8 @@ from userprofile.models import UserProfile
 import json 
 
 def home_view(request):
-    import sqlite3
-    print(sqlite3.version)
+    # import sqlite3
+    # print(sqlite3.version)
     # data = Blog.objects.all().values() // important  : if you don't want foreign key data 
     is_logged_in = check_login_view(request)
     data = Blog.objects.filter(is_published__exact = True).select_related('user')
