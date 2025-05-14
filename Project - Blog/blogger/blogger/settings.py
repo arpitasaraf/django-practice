@@ -76,6 +76,17 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.mysql',
+#             'NAME':os.environ.get("DB_NAME","ROOT") ,
+#             'USER': os.environ.get("DB_USER","SECRET"),
+#             'PASSWORD': os.environ.get("DB_PASSWORD","SECRET"),
+#             'HOST': os.environ.get("DB_HOST","SECRET"),
+#             'PORT': os.environ.get("DB_PORT","SECRET")
+#         }
+#     }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
